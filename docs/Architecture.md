@@ -6,13 +6,15 @@
 
 An `IController` implementation is responsible for:
 
-- accepting a validated target ballast position in the range `[0, 1]`
+- accepting a validated target ballast position as `BallastFillFraction`
 - reporting the currently configured target ballast position
 
 The intent of this boundary is to drive the inner ballast loop only.
 
-`0.0` means zero water mass.
-`1.0` means maximum ballast mass.
+For `BallastFillFraction`:
+
+- `0.0` means zero water mass
+- `1.0` means maximum ballast mass
 
 ## Non-responsibilities
 

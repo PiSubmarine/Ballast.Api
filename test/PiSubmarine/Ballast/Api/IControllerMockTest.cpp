@@ -1,13 +1,14 @@
 #include <gtest/gtest.h>
 
 #include "PiSubmarine/Ballast/Api/IControllerMock.h"
+#include "PiSubmarine/NormalizedFraction.h"
 
 namespace PiSubmarine::Ballast::Api
 {
     TEST(IControllerMockTest, SupportsSettingTargetPosition)
     {
         IControllerMock controller;
-        const auto targetPosition = NormalizedFraction(0.65);
+        const auto targetPosition = BallastFillFraction{NormalizedFraction{0.65}};
 
         EXPECT_CALL(controller, SetTargetPosition(targetPosition))
             .WillOnce(testing::Return(Error::Api::Result<void>{}));
@@ -18,10 +19,10 @@ namespace PiSubmarine::Ballast::Api
     TEST(IControllerMockTest, SupportsGettingTargetPosition)
     {
         IControllerMock controller;
-        const auto targetPosition = NormalizedFraction(0.35);
+        const auto targetPosition = BallastFillFraction{NormalizedFraction{0.35}};
 
         EXPECT_CALL(controller, GetTargetPosition())
-            .WillOnce(testing::Return(Error::Api::Result<NormalizedFraction>{targetPosition}));
+            .WillOnce(testing::Return(Error::Api::Result<BallastFillFraction>{targetPosition}));
 
         const auto result = controller.GetTargetPosition();
 

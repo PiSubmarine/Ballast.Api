@@ -9,7 +9,7 @@ namespace PiSubmarine::Ballast::Api
     class IControllerMock : public IController
     {
     public:
-        MOCK_METHOD((Error::Api::Result<void>), SetTargetPosition, (NormalizedFraction position), (override));
-        MOCK_METHOD((Error::Api::Result<NormalizedFraction>), GetTargetPosition, (), (const, override));
+        MOCK_METHOD((Error::Api::Result<void>), SetTargetPosition, (BallastFillFraction position), (override));
+        MOCK_METHOD((Error::Api::Result<BallastFillFraction>), GetTargetPosition, (), (const, override));
     };
 }

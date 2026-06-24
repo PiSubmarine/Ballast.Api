@@ -1,7 +1,7 @@
 #pragma once
 
+#include "PiSubmarine/Ballast/BallastFillFraction.h"
 #include "PiSubmarine/Error/Api/Result.h"
-#include "PiSubmarine/NormalizedFraction.h"
 
 namespace PiSubmarine::Ballast::Api
 {
@@ -10,7 +10,7 @@ namespace PiSubmarine::Ballast::Api
     public:
         virtual ~IController() = default;
 
-        [[nodiscard]] virtual Error::Api::Result<void> SetTargetPosition(NormalizedFraction position) = 0;
-        [[nodiscard]] virtual Error::Api::Result<NormalizedFraction> GetTargetPosition() const = 0;
+        [[nodiscard]] virtual Error::Api::Result<void> SetTargetPosition(BallastFillFraction position) = 0;
+        [[nodiscard]] virtual Error::Api::Result<BallastFillFraction> GetTargetPosition() const = 0;
     };
 }
